@@ -2,11 +2,13 @@
 Lập trình game với Unity #3
 
 # SUBWAY SUFFER 
-
-Tiêu đề vắn tắt dự án
+Lập trình game casual thể loại subway surfers.
 
 **Thành viên nhóm:**
-Liệt kê thành viên nhóm phát triển dự án
+1.Nguyễn Mai Phương 
+2.Lò Thị Trang
+3.Bùi Minh Vũ
+4.Lê Minh Vũ
 # 1. Mô tả game
 Mô tả cô đọng trong 5-10 dòng
 
