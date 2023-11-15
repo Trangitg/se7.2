@@ -5,10 +5,10 @@ Lập trình game với Unity #3
 Lập trình game casual thể loại subway surfers.
 
 **Thành viên nhóm:**
-1.Nguyễn Mai Phương 
-2.Lò Thị Trang
-3.Bùi Minh Vũ
-4.Lê Minh Vũ
+1.Nguyễn Mai Phương  21000200
+2.Lò Thị Trang       21001592 (Leader)
+3.Bùi Minh Vũ        21001600
+4.Lê Minh Vũ         21001601
 # 1. Mô tả game
 Mô tả cô đọng trong 5-10 dòng
 
