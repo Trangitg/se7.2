@@ -16,9 +16,9 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 0
+  - 6951215238297272
   appLabels:
-  - App Name
+  - Street Surfer
   cookie: 1
   logging: 1
   status: 1
