@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class NetworkMagnager : MonoBehaviour {
 
@@ -20,20 +22,18 @@ public class NetworkMagnager : MonoBehaviour {
 
     void Start()
     {
-        /*
         if (transform.GetComponent<PhotonView>() == null)
         {
             PhotonView photonView = transform.gameObject.AddComponent<PhotonView>();
-            photonView.viewID = 1;
-            photonView.instantiationId = 1;
+            photonView.ViewID = 1;
+            photonView.InstantiationId = 1;
         }
         receiveImage = new Texture2D(128, 128, TextureFormat.RGB24, false);
-        */
     }
 
     public void KickPlayer()
     {
-        //transform.GetComponent<PhotonView>().RPC("SendKickPlayer", PhotonTargets.Others, Modules.listNamePlayer[1]);
+        transform.GetComponent<PhotonView>().RPC("SendKickPlayer", Photon.Pun.RpcTarget.Others, Modules.listNamePlayer[1]);
     }
 
     //void CheckoutMyRoom()
@@ -45,48 +45,53 @@ public class NetworkMagnager : MonoBehaviour {
 
     public void DisconectNetwork()
     {
-        //PhotonNetwork.Disconnect();
+        PhotonNetwork.Disconnect();
     }
 
     public void CancelRoom()
     {
-        //if (PhotonNetwork.inRoom) PhotonNetwork.LeaveRoom();
+        if (PhotonNetwork.InRoom) PhotonNetwork.LeaveRoom();
     }
 
     public void StartGame()
     {
-        /*
-        if (!PhotonNetwork.isMasterClient) return;
-        PhotonNetwork.room.IsOpen = false;
+        if (!PhotonNetwork.IsMasterClient) return;
+        PhotonNetwork.CurrentRoom.IsOpen = false;
         syncWrite = PhotonNetwork.Instantiate(tranSyncServer.name, Vector3.zero, Quaternion.identity, 0);
         syncWrite.GetComponent<SendViewEnemyNew>().myImage = imageShowLive;
         syncWrite.GetComponent<SendViewEnemyNew>().isWriting = true;
         syncWrite.GetComponent<SendViewEnemyNew>().CallStart();
-        transform.GetComponent<PhotonView>().RPC("SendSyncServer", PhotonTargets.Others);
-        */
+        transform.GetComponent<PhotonView>().RPC("SendSyncServer", Photon.Pun.RpcTarget.Others);
     }
 
     public void SyncAvatar()
     {
-        /*
         if (Modules.fbMyAvatar != null)
-            transform.GetComponent<PhotonView>().RPC("SendSyncAvatar", PhotonTargets.Others, Modules.fbMyAvatar.texture.EncodeToJPG());
-        else transform.GetComponent<PhotonView>().RPC("SendNullAvatar", PhotonTargets.Others);
-        */
+            transform.GetComponent<PhotonView>().RPC("SendSyncAvatar", Photon.Pun.RpcTarget.Others, Modules.fbMyAvatar.texture.EncodeToJPG());
+        else transform.GetComponent<PhotonView>().RPC("SendNullAvatar", Photon.Pun.RpcTarget.Others);
     }
 
     void OnCreatedRoom()//tao room
     {
-        
+        if (messageFindBox.GetComponent<MessageFindOpponent>().isClose)
+        {
+            CancelRoom();
+            return;
+        }
+        Modules.listNamePlayer = new List<string>();
+        Modules.listNamePlayer.Add(Modules.namePlayOnline);
+        //messageNetworkBox.GetComponent<MessageNetwork>().ButtonCloseBox();
+        //messageRoomBox.SetActive(true);
+        //messageRoomBox.GetComponent<Animator>().SetTrigger("TriOpen");
+        //messageRoomBox.GetComponent<MessageRoom>().CallStart();
+        print("cretate");
     }
 
     void OnJoinedRoom()//vao room
     {
-        /*
-        if (PhotonNetwork.isMasterClient) return;
-        transform.GetComponent<PhotonView>().RPC("AskJoinRoom", PhotonTargets.MasterClient, Modules.namePlayOnline);
+        if (PhotonNetwork.IsMasterClient) return;
+        transform.GetComponent<PhotonView>().RPC("AskJoinRoom", Photon.Pun.RpcTarget.MasterClient, Modules.namePlayOnline);
         print("join room");
-        */
     }
 
     void OnLeftRoom()//neu chinh minh tu thoat ra
@@ -109,15 +114,13 @@ public class NetworkMagnager : MonoBehaviour {
         messageFindBox.SetActive(false);
     }
 
-    /*
-    void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)//xu ly ca 2 phia server va client
+    void OnPhotonPlayerDisconnected(Photon.Realtime.Player otherPlayer)//xu ly ca 2 phia server va client
     {
         if (Modules.startViewOnline)
             Modules.panelViewEnemy.GetComponent<RunEffectViewEnemy>().StartView(true);
         CancelRoom();
         print("dis room");
     }
-    
 
     void OnDisconnectedFromPhoton()//neu bi dis mang
     {
@@ -126,7 +129,6 @@ public class NetworkMagnager : MonoBehaviour {
         ResetRoom();
         print("dis photon");
     }
-    */
 
     string ImportDataArray(List<string> listInput, string charSplit)
     {
@@ -148,13 +150,12 @@ public class NetworkMagnager : MonoBehaviour {
     }
 
     //KHU VUC PunRPC
-    /*
     [PunRPC]
     void AskJoinRoom(string namePlayer)//xu ly khi client gui du lieu dang ky join len server
     {
         Modules.listNamePlayer.Add(namePlayer);
         //messageRoomBox.GetComponent<MessageRoom>().UpdateStatus();
-        transform.GetComponent<PhotonView>().RPC("SendJoinRoom", PhotonTargets.Others, ImportDataArray(Modules.listNamePlayer, ";"));
+        transform.GetComponent<PhotonView>().RPC("SendJoinRoom", Photon.Pun.RpcTarget.Others, ImportDataArray(Modules.listNamePlayer, ";"));
     }
 
     [PunRPC]
@@ -189,7 +190,7 @@ public class NetworkMagnager : MonoBehaviour {
         syncWrite.GetComponent<SendViewEnemyNew>().myImage = imageShowLive;
         syncWrite.GetComponent<SendViewEnemyNew>().isWriting = true;
         syncWrite.GetComponent<SendViewEnemyNew>().CallStart();
-        transform.GetComponent<PhotonView>().RPC("SendSyncClient", PhotonTargets.MasterClient);
+        transform.GetComponent<PhotonView>().RPC("SendSyncClient", Photon.Pun.RpcTarget.MasterClient);
     }
 
     [PunRPC]
@@ -202,7 +203,7 @@ public class NetworkMagnager : MonoBehaviour {
             syncRead.GetComponent<SendViewEnemyNew>().isWriting = false;
             syncRead.GetComponent<SendViewEnemyNew>().CallStart();
         }
-        transform.GetComponent<PhotonView>().RPC("SendStartGame", PhotonTargets.All);
+        transform.GetComponent<PhotonView>().RPC("SendStartGame", Photon.Pun.RpcTarget.All);
     }
 
     [PunRPC]
@@ -230,5 +231,4 @@ public class NetworkMagnager : MonoBehaviour {
     {
         messageFindBox.GetComponent<MessageFindOpponent>().UpdateAvatarEnemy();
     }
-    */
 }

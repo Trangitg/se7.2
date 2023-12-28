@@ -680,7 +680,6 @@ public class PageMainGame : MonoBehaviour {
         rateBox.GetComponent<Animator>().SetTrigger("TriOpen");
     }
 
-    /*
     public void ButtonShareFacebook()
     {
         Modules.PlayAudioClipFree(Modules.audioButton);
@@ -713,7 +712,6 @@ public class PageMainGame : MonoBehaviour {
             inviteFBBox.GetComponent<Animator>().SetTrigger("TriOpen");
         }
     }
-    */
 
     public void UpdateKeys()
     {

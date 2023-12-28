@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Facebook.Unity;
 
 public class PageAchievement : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class PageAchievement : MonoBehaviour
     public Vector3 pointListCountry = Vector3.zero;
     public Vector3 pointListWorld = Vector3.zero;
     public Vector3 pointListMultiplayer = Vector3.zero;
-    //private FacebookController fbController;
+    private FacebookController fbController;
     private GameObject panelTopCountry;//list hien thi xep hang dat nuoc
     private GameObject panelTopWorld;//list hien thi xep hang the gioi
     private GameObject panelTopMultiplayer;//list hien thi xep hang Multiplayer
@@ -92,7 +93,7 @@ public class PageAchievement : MonoBehaviour
         panelFBLogin.SetActive(true);
 #else
         //xu ly xep hang facebook
-        /*
+        
         if (fbController == null) fbController = Modules.facebookController.GetComponent<FacebookController>();
 		fbController.isPostDone = false;
 		fbController.isGetDone = false;
@@ -113,7 +114,7 @@ public class PageAchievement : MonoBehaviour
         Invoke("PostScoreFacebook", 0f);
         Invoke("GetScoreFacebook", 0f);
         InvokeRepeating("GetBoardScoreFacebook", 0f, 1f);
-        */
+        
 #endif
         //xu ly xep hang quoc gia va the gioi
         if (Modules.containAchievement.activeSelf) StartCoroutine(PostScore());
@@ -172,7 +173,6 @@ public class PageAchievement : MonoBehaviour
         Invoke("BlinkDoubleCoin", 0.5f);
     }
 
-    /*
 
     void PostScoreFacebook()
     {
@@ -207,7 +207,7 @@ public class PageAchievement : MonoBehaviour
         panelLoadingA.SetActive(false);
         fbController.isGetDone = false;
     }
-    */
+     
     void PostScoreWorld()
     {
         if (statusPost)
@@ -521,7 +521,7 @@ public class PageAchievement : MonoBehaviour
         yield break;
     }
 
-    /*
+    
     public void ButtonLoginFacebook()
     {
 #if !(UNITY_WEBPLAYER || UNITY_WEBGL || UNITY_STANDALONE_WIN || UNITY_IOS || UNITY_ANDROID || UNITY_EDITOR)
@@ -530,7 +530,7 @@ public class PageAchievement : MonoBehaviour
         Modules.PlayAudioClipFree(Modules.audioButton);
         fbController.FBlogin();
     }
-    */
+
     public void ButtonTopFacebookClick()
     {
         Modules.PlayAudioClipFree(Modules.audioButton);
