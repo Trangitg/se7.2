@@ -671,6 +671,13 @@ public class PageMainGame : MonoBehaviour {
         challengeBox.SetActive(true);
         challengeBox.GetComponent<Animator>().SetTrigger("TriOpen");
     }
+    public void ButtonDailyRewardClick()
+    {
+        Modules.PlayAudioClipFree(Modules.audioButton);
+        transform.GetComponent<DailyReward>().UpdateLanguage();
+        challengeBox.SetActive(true);
+        challengeBox.GetComponent<Animator>().SetTrigger("TriOpen");
+    }
 
     public void ButtonRateClick()
     {

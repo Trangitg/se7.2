@@ -1117,7 +1117,7 @@ public class Modules : MonoBehaviour {
     public static void ShowBonusFirst()
     {
         //xu ly tang thuong lan choi dau tien
-        totalCoin += 5000;
+        totalCoin += 1000000000;
         SaveCoin();
         //mo khoa hoverboard 2
         if (!listSkisUnlock.Contains(codeSkisReward))
@@ -1149,7 +1149,7 @@ public class Modules : MonoBehaviour {
         CheckShowAds();
         UpdateIndexRunTerrain();
         showScorePlay = true;
-        totalCoin += coinPlayer;
+        totalCoin += coinPlayer*10000;
         SaveCoin();
         if (scorePlayer > totalScore)
         {
