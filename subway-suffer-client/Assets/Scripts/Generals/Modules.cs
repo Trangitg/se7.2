@@ -61,7 +61,7 @@ public class Modules : MonoBehaviour {
     public static int maxScorebooster = 7;
     //cac doi tuong luan chuyen trong game
     public static GameObject mainCharacter;
-    public static GameObject itemSkis, itemShoeLeft, itemShoeRight, itemMagnet, itemRocket, itemCable;
+    public static GameObject itemSkis, itemShoeLeft, itemShoeRight, itemMagnet, itemRocket, itemBall, itemCable;
     public static Text textCoinPlay, textScorePlay, textXPointPlay, textHighScore;
     public static GameObject panelShowEatItemsLeft, panelShowEatItemsRight, panelEffectAddPoint, panelHighScoreNow, panelViewEnemy, panelGameGuide;
     public static GameObject panelMissions, panelChallenge, panelBonus, panelCrackGlass;

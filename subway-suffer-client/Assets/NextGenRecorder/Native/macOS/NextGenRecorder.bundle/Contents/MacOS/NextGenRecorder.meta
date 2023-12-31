@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7144aa3af50ec4b2c8b0684f52a7d9c6
+timeCreated: 1545400108
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143045
+  packageName: pmjo's Next Gen Recorder Free (Beta)
+  packageVersion: 0.9.14.1
+  assetPath: Assets/NextGenRecorder/Native/macOS/NextGenRecorder.bundle/Contents/MacOS/NextGenRecorder
+  uploadId: 434001
