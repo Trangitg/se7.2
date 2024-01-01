@@ -55,15 +55,21 @@ Mô tả chi tiết các sửa đổi trong game, bao gồm hình ảnh, thuyế
   
 - Trong HeroController(Script):
   + IdHero: 008 (chọn Id không trùng với Id của những nhân vật có sẵn)
+    
   + CostHero: 100000 (Giá tiền để unlock ván trượt)
+    
   + NoteHero: 7 (tương ứng với List<List> heroInfoHero vừa tạo)
+    
   + AniHero: Kéo file nhân vật prefab vào
     
     ![image](https://github.com/Trangitg/se7.2/assets/148120250/d48f8589-f843-42bd-bbf1-41a22b455456)
     
   + PoinCheckRay: Object PointRaycast
+    
     PointShowHero: Object PointShow
+    
     MyCollider: Object Collider
+    
     ShadowFixed(Script): Point Raycast: Mở file Prefab nhân vật kéo phần body gốc của file vào
     
     ![image](https://github.com/Trangitg/se7.2/assets/148120250/3b401868-f99c-4626-97ad-27d2df37c35b)
@@ -98,11 +104,17 @@ Mô tả chi tiết các sửa đổi trong game, bao gồm hình ảnh, thuyế
   ![image](https://github.com/Trangitg/se7.2/assets/148120250/0c6ca224-e714-4a09-9fc6-c3f0a99dea77)
   
 - AllElements\BGAvatar\Avatar, trong Image SourceImage lấy hình ảnh IconKey
+- 
   AllElements\Name Trong Text đặt tên vật phẩm là Key
+  
   AllElements\Cost\Value Trong phần Text nhập giá vật phẩm mong muốn
+  
   AllElements\Note nhập miêu tả vật phẩm
+  
   AllElements\ButBuy trong ButtonBuyItem.cs sửa CodeItem thành 1
+  
 - Thêm chức năng mua trong file script ButtonBuyItem.cs
+  
   Tìm ButtonClick() sau đó thêm đoạn code sau vào vòng lặp codeItem == 1
 
   ![image](https://github.com/Trangitg/se7.2/assets/148120250/4250e969-e935-4539-9ba3-5d2182773106)
