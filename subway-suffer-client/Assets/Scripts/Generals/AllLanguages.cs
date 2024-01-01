@@ -263,6 +263,20 @@ public class AllLanguages : MonoBehaviour {
         "挑战", 
         "THỬ THÁCH" 
     };
+    public static List<string> menuDailyReward = new List<string>() 
+    { 
+        "DAILY REWARD", 
+        "ЕЖЕДНЕВНЫЕ НАГРАДЫ", 
+        "RÉCOMPENSES QUOTIDIENNES",
+        "TÄGLICHE BELOHNUNGEN", 
+        "Recompensas diarias", 
+        "Recompensas diárias", 
+        "المكافآت اليومية",
+        "毎日の報酬", 
+        "일일 보상",
+        "每日奖励", 
+        "PHẦN THƯỞNG HÀNG NGÀY" 
+    };
     public static List<string> menuTitleMissions = new List<string>() 
     { 
         "Collect items", 

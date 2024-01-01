@@ -15,7 +15,7 @@ public class PageMainGame : MonoBehaviour {
     public Vector3 pointStartEnemyLeft = Vector3.zero, pointStartEnemyRight = Vector3.zero;
     public GameObject mesSaveMeBox, mesPauseGame, mesCountTime,
         mesNotEnoughKey, mesSetting, getSkisBox,
-        getKeysBox, missionsBox, challengeBox,
+        getKeysBox, missionsBox, challengeBox, DRbox,
         listLanguageBox, rateBox, shareFBBox,
         inviteFBBox, networkBox, roomBox,
         bonusFirstBox, findOpponentsBox, resultOnlineBox;
@@ -149,7 +149,6 @@ public class PageMainGame : MonoBehaviour {
              && CheckNoMessageShow())
             ButtonRateClick();
     }
-
     private Vector2 startPos;
     private Vector2 oldTap = new Vector2(-1000, -1000);
     public float minSwipeDistY = 50f;
@@ -246,7 +245,7 @@ public class PageMainGame : MonoBehaviour {
     {
         bool result = true;
         if (mesSetting.activeSelf || mesPauseGame.activeSelf || mesSaveMeBox.activeSelf || mesNotEnoughKey.activeSelf
-               || getSkisBox.activeSelf || getKeysBox.activeSelf || missionsBox.activeSelf || challengeBox.activeSelf
+               || getSkisBox.activeSelf || getKeysBox.activeSelf || missionsBox.activeSelf || challengeBox.activeSelf ||DRbox.activeSelf
                || listLanguageBox.activeSelf || mesCountTime.activeSelf || rateBox.activeSelf || shareFBBox.activeSelf
                || inviteFBBox.activeSelf || networkBox.activeSelf || roomBox.activeSelf || findOpponentsBox.activeSelf
                || bonusFirstBox.activeSelf | resultOnlineBox.activeSelf) result = false;
@@ -674,9 +673,9 @@ public class PageMainGame : MonoBehaviour {
     public void ButtonDailyRewardClick()
     {
         Modules.PlayAudioClipFree(Modules.audioButton);
-        transform.GetComponent<DailyReward>().UpdateLanguage();
-        challengeBox.SetActive(true);
-        challengeBox.GetComponent<Animator>().SetTrigger("TriOpen");
+        DRbox.GetComponent<DailyRController>().StartShowMessage();
+        DRbox.SetActive(true);
+        DRbox.GetComponent<Animator>().SetTrigger("TriOpen");
     }
 
     public void ButtonRateClick()

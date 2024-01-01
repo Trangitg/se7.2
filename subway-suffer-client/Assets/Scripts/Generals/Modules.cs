@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -917,6 +917,7 @@ public class Modules : MonoBehaviour {
         SaveLoadData.SaveData("SaveCodeRunTerrain", listCodeTerrain, true);
     }
 
+
     public static void UpdateValueMissions()
     {
         Transform tranIcon = panelMissions.transform.Find("IconMissions");
@@ -1149,7 +1150,7 @@ public class Modules : MonoBehaviour {
         CheckShowAds();
         UpdateIndexRunTerrain();
         showScorePlay = true;
-        totalCoin += coinPlayer*10000;
+        totalCoin += coinPlayer;
         SaveCoin();
         if (scorePlayer > totalScore)
         {
