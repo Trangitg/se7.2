@@ -78,7 +78,14 @@ Mô tả chi tiết các sửa đổi trong game, bao gồm hình ảnh, thuyế
   
   ![image](https://github.com/Trangitg/se7.2/assets/148120250/0d3a8034-7965-449b-849c-ecfd9043ebb1)
   
-- Hình ảnh trong game
+- Hình ảnh trong game:
+  
+  ![image](https://github.com/Trangitg/se7.2/assets/148120250/50c13463-07c8-4f02-9620-64cc38d41951)
+
+  ![image](https://github.com/Trangitg/se7.2/assets/148120250/47a386fa-68ea-4371-857a-e242da0a0436)
+
+  ![image](https://github.com/Trangitg/se7.2/assets/148120250/108bf90c-3569-4cb0-a7be-26d98a9478f2)
+
   
 ## 2.2. Thêm vật phẩm trong cửa hàng (mua key bằng vàng)
 - \Assets\ResourcesGame\Prefabs\MessageUI\ListItemBuy là giao diện của cửa hàng
@@ -131,6 +138,49 @@ Mô tả chi tiết các sửa đổi trong game, bao gồm hình ảnh, thuyế
 
 - Hình ảnh trong game:
 
+  ![image](https://github.com/Trangitg/se7.2/assets/148120250/d145c96d-bd15-485d-accc-071d9c9808e8)
+  
+
+## 2.3. Thêm ván trượt 
+- Download model .fbx hình ván trượt
+
+  ![image](https://github.com/Trangitg/se7.2/assets/148120250/e3c0944c-6b9c-40db-b7c1-35305afc2e16)
+
+- Mở model trong unity, trong phần Inspector setting như hình để trích xuất màu model
+
+  ![image](https://github.com/Trangitg/se7.2/assets/148120250/795335ea-effc-41a7-9ea9-269dc5fd7c7a)
+
+  ![image](https://github.com/Trangitg/se7.2/assets/148120250/f22aea7e-4ab1-4893-ab12-93238b4e04b5)
+
+  ![image](https://github.com/Trangitg/se7.2/assets/148120250/c49bc88e-0c31-49d7-879e-a61b88e7fd3e)
+
+- Copy các component ItemAddHero(Script), SkisController(Script), MagnetController(Script), PlaySparksSkis(Script) của ván trượt có sẵn vào ván mới, setting như hình
+
+  ![image](https://github.com/Trangitg/se7.2/assets/148120250/8e9e14ed-6b7a-4baf-8528-f5a8eb609cf1)
+
+- Kéo model vào trong tab Scene, rồi từ tab Hierarchy kéo model vào folder Prefab ở tab Project để chuyển thành file prefab
+
+  ![image](https://github.com/Trangitg/se7.2/assets/148120250/e04c6184-0f19-4fca-98f4-79ee82e95e40)
+
+- Trong class AllLanguages.cs: List heroInfoHoverboard là text miêu tả thông tin nhân vật. Tạo List() mới với thông tin miêu tả 11 ngôn ngữ của ván trượt
+
+  ![image](https://github.com/Trangitg/se7.2/assets/148120250/e3d30dcb-3b46-41f5-a5bc-e287fcff45eb)
+
+- Trong ListResources, trong componrnt ListCharacterUse(Script): có ListSkisUse là danh sách các ván trượt đang được sử dụng, thêm ván trượt mới vào danh sách các nhân vật
+
+  ![image](https://github.com/Trangitg/se7.2/assets/148120250/3541f7c4-4c04-46a1-a9cb-6b5e127f40ea)
+
+- Chỉnh lại kích thước trong Transform cho phù hợp
+
+  ![image](https://github.com/Trangitg/se7.2/assets/148120250/f79632df-cb1a-4412-abf9-eaae87e19790)
+
+- Hình ảnh trong game
+
+  ![image](https://github.com/Trangitg/se7.2/assets/148120250/c7cf6132-c51c-4cb9-9e5e-2bf80b568021)
+
+  ![image](https://github.com/Trangitg/se7.2/assets/148120250/926c7368-67dd-4a8f-9860-06b2cf7c4994)
+
+  
 # 3. Hướng dẫn Khởi tạo dự án
 ## 3.1. Cài Unity bản từ 2022 trở đi
 Đăng ký tài khoản Unity bằng account sinh viên để có thể tham gia chương trình Education License của Unity
