@@ -104,35 +104,6 @@ Mô tả chi tiết các sửa đổi trong game, bao gồm hình ảnh, thuyế
   AllElements\ButBuy trong ButtonBuyItem.cs sửa CodeItem thành 1
 - Thêm chức năng mua trong file script ButtonBuyItem.cs
   Tìm ButtonClick() sau đó thêm đoạn code sau vào vòng lặp codeItem == 1
-  int cost = Modules.IntParseFast(textCost.text); //lấy giá tiền vật phẩm từ text textCost chuyển thành kiểu int để tính toán
-            if (Modules.totalCoin >= cost)//Nếu đủ tiền
-            {
-                if (Modules.totalKey < 10000) // Đặt giới hạn số chìa khóa là 10000, nếu số chìa khóa đang có < 10000
-                {
-                    Modules.totalKey += 1;//số chìa khóa +1
-                    Modules.SaveKey();
-                    Modules.totalCoin -= cost;//Trừ số tiền hiện tại bằng giá tiền mua
-                    Modules.SaveCoin();
-                    if (Modules.containShopItem.activeSelf)
-                        Camera.main.GetComponent<PageShopItems>().UpdateCoins();
-                        textNote.text = AllLanguages.shopTotal[Modules.indexLanguage] + " " + Modules.totalKey.ToString();           
-                    if (Modules.containShopItem.activeSelf)
-                        Camera.main.GetComponent<PageShopItems>().UpdateKeys();
-           // Cập nhật số tiền và số key hiện có trong Pageshop 
-                }
-                else//nếu vượt quá số lượng key giới hạn thì phần textNote in ra thông báo lỗi shopMaxNumber
-                {
-                    textNote.text = AllLanguages.shopMaxNumber[Modules.indexLanguage];
-                    textNote.color = colorNotCoin;
-                    Invoke("ReturnValueTotal", 1f);
-                }
-            }
-            else//Nếu không đủ tiền thì phần textNote in ra thông báo lỗi shopNotEnough
-            {
-                textNote.text = AllLanguages.shopNotEnough[Modules.indexLanguage];
-                textNote.color = colorNotCoin;
-                Invoke("ReturnValueTotal", 1f);
-            }
 
   ![image](https://github.com/Trangitg/se7.2/assets/148120250/4250e969-e935-4539-9ba3-5d2182773106)
 
