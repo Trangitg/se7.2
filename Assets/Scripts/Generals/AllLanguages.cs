@@ -1565,6 +1565,19 @@ public class AllLanguages : MonoBehaviour {
             "Kareta\n长度：75 厘米\n宽度：40 厘米\n重量：3.5 公斤",
             "Kareta\nDài: 75 cm\nRộng: 40 cm\nNặng: 3.5 kg"
         },
+        new List<string>() 
+        {
+            "Flying\nLength: 80 cm\nWidth: 26 cm\nWeight: 2 kg",
+            "Flying\nLongueur: 80 cm\nLargeur: 26 cm\nPoids: 2 kg",
+            "Flying\nLänge: 80 cm\nBreite: 26 cm\nGewicht: 2 kg",
+            "Flying\nLargo: 80 cm\nAncho: 26 cm\nPeso: 2 kg",
+            "Flying\nComprimento: 80 cm\nLargura: 26 cm\nPeso: 2 kg",
+            "Flying\nالطول: 80 سم \nالعرض: 26 سم \nالوزن:2. كجم",
+            "Flying\n長さ：80 cm\n幅：26 cm\n重量：2 kg",
+            "Flying\n길이: 80 cm\n너비: 26 cm\n무게: 2 kg",
+            "Flying\n长度：80 厘米\n宽度：26 厘米\n重量：2 公斤",
+            "Flying\nDài: 80 cm\nRộng: 26 cm\nNặng: 2 kg"
+        }
     };
 
     //IN PAGE TOP/ACHIEVEMENT
