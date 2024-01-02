@@ -33,7 +33,29 @@ Các usecase chính, nhân vật có thể chơi như nào. Cần có hình ản
 
 # 2. Các sửa đổi cho game
 Mô tả chi tiết các sửa đổi trong game, bao gồm hình ảnh, thuyết minh, thuật toán hoặc các Class hay method thêm/sửa/xóa
-## 2.1. Thay đổi 1
+## 2.1 Fix map
+- Nhân vật rơi khỏi thế giới khi đi lên đường hầm
+Vào Assets\ResourcesGame\Prefabs\Terrains tìm những terrains có đường đi lên hầm (B005, B007, C005, C008, D013, D016) có những object là RoadCM
+Thêm component BarrielInfomation.cs vào RoadCM với các settings:
+
+SuportSkis : true
+
+TypeBarriel : NevelFall
+
+TypeFalling : Back
+
+NeverDestroy : true
+
+![Screenshot 2024-01-03 002339](https://github.com/Trangitg/se7.2/assets/93517130/0415fc4f-8511-40e3-89b4-d25b92e460c1)
+
+- Lỗi không tắt được box Find Opponent
+Vào Assets\Scripts\OtherPage\DeactivateMessageBox.cs và thêm hàm ButtonCloseMessage()
+![Screenshot 2024-01-03 003532](https://github.com/Trangitg/se7.2/assets/93517130/cc18a8fb-8ac5-40d4-afc6-e1e7989c9705)
+
+Sau đó vào Assets\Scenes\GameMain.unity
+Trong phần Hierarchy, Vào GameMain\ContainGameMain\Canvas\FormGameMenu\MessageBox\AutoFindOpponentBox\AllContents\ButtonClose
+Tại Component Button, Thêm Script AutoFindOpponentBox vào hàm On Click () và chọn function ButtonCloseMessage()
+![Screenshot 2024-01-03 003905](https://github.com/Trangitg/se7.2/assets/93517130/e45ddf1d-2024-4cd3-ad05-91dbaecafaf3)
 ## 2.2. Thay đổi 2
 
 # 3. Hướng dẫn Khởi tạo dự án
