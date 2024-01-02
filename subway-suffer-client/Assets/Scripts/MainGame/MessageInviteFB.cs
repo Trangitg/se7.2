@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Runtime.Serialization;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -25,18 +25,18 @@ public class MessageInviteFB : MonoBehaviour {
         transform.gameObject.GetComponent<Animator>().SetTrigger("TriClose");
         Modules.PlayAudioClipFree(Modules.audioButton);
     }
-
+    /*
     public void ButtonInviteClick()
     {
-        /*
+        
         Facebook.Unity.FB.AppRequest(
             AllLanguages.menuMessageInvite[Modules.indexLanguage],
             null, null, null, 100, string.Empty, AllLanguages.menuTitleInvite[Modules.indexLanguage], RewardInviteFB);
         ButtonCloseClick();
-        */
+        
     }
 
-    /*
+    
     private void RewardInviteFB(Facebook.Unity.IAppRequestResult result)
     {
         //Modules.textDebug.text += "\n" + result;
@@ -59,6 +59,6 @@ public class MessageInviteFB : MonoBehaviour {
                 Modules.SaveCheckInviteFB();
             }
         }
-    }
-    */
+    }*/
+    
 }

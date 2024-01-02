@@ -11,7 +11,7 @@ public class PageMainGame : MonoBehaviour {
     public GameObject panelShowEatItemsLeft, panelShowEatItemsRight, panelShowBuyItems, panelEffectAddPoint, panelHighScoreNow, panelViewEnemy, panelGameGuide;
     public GameObject panelMissions, panelChallenge, panelBonus, panelCrackGlass, panelFakeCity;
     public GameObject enemyLeft;
-    public GameObject itemShoeLeft, itemShoeRight, itemMagnet, itemRocket, itemCable;
+    public GameObject itemShoeLeft, itemShoeRight, itemMagnet, itemRocket,itemBall, itemCable;
     public Vector3 pointStartEnemyLeft = Vector3.zero, pointStartEnemyRight = Vector3.zero;
     public GameObject mesSaveMeBox, mesPauseGame, mesCountTime,
         mesNotEnoughKey, mesSetting, getSkisBox,
@@ -38,6 +38,7 @@ public class PageMainGame : MonoBehaviour {
         originSwipeDistX = minSwipeDistX;
         originSwipeDistY = minSwipeDistY;
         //gan lai cac thiet lap vao modules
+        Modules.itemBall = itemBall;
         Modules.containMainGame = containMainGame;
         Modules.containHeroConstruct = containHeroConstruct;
         Modules.containAchievement = containAchievement;
