@@ -473,17 +473,40 @@ Code item là: 0 rocket, 1 power, 2 magnet, 3 2x, 4 cable, 5 skis
 # 2. Các sửa đổi cho game
 Mô tả chi tiết các sửa đổi trong game, bao gồm hình ảnh, thuyết minh, thuật toán hoặc các Class hay method thêm/sửa/xóa
 ## 2.1. Thay đổi 1: Tắt box tìm đối thủ
-    ![image](https://github.com/thoongnt/se7.3/assets/148628352/37f366b7-2775-4696-b03d-2c0c466d1a78)  
-    Trong game, box tìm đối thủ được quản lý bởi một đối tượng gọi là AutoFindOpponentsBox. Trong AutoFindOpponentsBox, có một script được gọi là DeactiveMessageBox.cs, đây chịu trách nhiệm điều khiển hiển thị và ẩn đi box thông báo trạng thái.
-    ![image](https://github.com/thoongnt/se7.3/assets/148628352/d6a6c1d4-1653-49a2-915b-4b17976b73f9) ![image](https://github.com/thoongnt/se7.3/assets/148628352/89909d0e-48b0-402d-ab2e-9aa6cb6fc11c)  
-    Để tắt box thông qua việc nhấn nút ButtonClose, ta cần thêm một hàm mới, chẳng hạn như ButtonCloseMessage(). Hàm này được liên kết với nút ButtonClose và khi được gọi, nó sẽ thực hiện hành động tắt box hiển thị trạng thái bằng cách tương tác với DeactiveMessageBox.cs. Điều này giúp người chơi đóng box một cách dễ dàng khi cần thiết.    
-    ![image](https://github.com/thoongnt/se7.3/assets/148628352/dfb649dc-3957-4c6d-a359-b654587f536c) ![image](https://github.com/thoongnt/se7.3/assets/148628352/248fd586-4bc9-42d0-8172-8c13c6872ef5)  
-    Hàm này được kích hoạt khi người dùng nhấn vào nút đóng (ButtonClose) trên hộp thoại. Đầu tiên, nó chạy một âm thanh thông báo việc nhấn nút (Module.PlayAudioClipFree). Sau đó, nó sử dụng một Animator để chơi một trigger animation ("TriClose") trên đối tượng này. Điều này thường được sử dụng để kích hoạt một hoạt ảnh đóng hộp thoại.
+    ![Screenshot (186)](https://github.com/Trangitg/se7.2/assets/119964656/b8f5d23f-6fdd-4f75-a0c1-b88980fec243)
+  Trong game, box tìm đối thủ được quản lý bởi một đối tượng gọi là AutoFindOpponentsBox. Trong AutoFindOpponentsBox, có một script được gọi là DeactiveMessageBox.cs, đây chịu trách nhiệm điều khiển hiển thị và ẩn đi box thông báo trạng thái.
+  ![Screenshot (187)](https://github.com/Trangitg/se7.2/assets/119964656/71e43747-3bb3-4ee0-89b4-d404f0671217)
+  Để tắt box thông qua việc nhấn nút ButtonClose, ta cần thêm một hàm mới, chẳng hạn như ButtonCloseMessage(). Hàm này được liên kết với nút ButtonClose và khi được gọi, nó sẽ thực hiện hành động tắt box hiển thị trạng thái bằng cách tương tác với DeactiveMessageBox.cs. Điều này giúp người chơi đóng box một cách dễ dàng khi cần thiết.    
+  ![Screenshot (188)](https://github.com/Trangitg/se7.2/assets/119964656/dc9e4a20-cb78-4eef-bc8d-74c759a2bfb4)
+  Hàm này được kích hoạt khi người dùng nhấn vào nút đóng (ButtonClose) trên hộp thoại. Đầu tiên, nó chạy một âm thanh thông báo việc nhấn nút (Module.PlayAudioClipFree). Sau đó, nó sử dụng một Animator để chơi một trigger animation ("TriClose") trên đối tượng này. Điều này thường được sử dụng để kích hoạt một hoạt ảnh đóng hộp thoại.
 ## 2.2. Thay đổi 2: 
  - Download 1 model vật phẩm mới
  - Click chọn file trong unity, trong phần Inspector chọn vào Materials, phần Textures chọn Extract Textures để trích xuất màu của model
- 
-image
+    ![88](https://github.com/Trangitg/se7.2/assets/119964656/c3d3920e-9fe4-4ce3-a821-b49a9c16d031)
+ - Kéo file vật phẩm mới vào trong scene, Kéo object vật phẩm vào từ Hierachy vào phần project để chuyển thành file prefab
+- Mở file ván trượt prefab: chỉnh Tranform của vật phẩm cho phù hợp với nhân vật
+    ![Screenshot (189)](https://github.com/Trangitg/se7.2/assets/119964656/40fc7d32-58b0-4a3b-8322-221e6c32606b)
+
+ - Dạng ăn item được trên đường: vào các file và thêm các thuộc tính TypeItems mới
+ - ItemInfomation.cs: thêm 1 enum mới (tên là ball) mới ở TypeItems
+    ![Screenshot (191)](https://github.com/Trangitg/se7.2/assets/119964656/cb38a81b-f807-4bde-bf65-4c07ad773bde)
+ - Module.cs: Thêm 1 game GameObject mới (tên là itemBall)
+    ![Screenshot (192)](https://github.com/Trangitg/se7.2/assets/119964656/e3feda11-cb2f-44d5-9223-d9fb01d85ca3)
+ - PageMainGame.cs: Thêm 1 GameObject mới (tên là itemBall), ở hàm Awake() thêm : Modules.itemBall = itemBall ;
+    ![Screenshot (193)](https://github.com/Trangitg/se7.2/assets/119964656/6385b9ff-086d-4024-ad32-b8d939fbc35b)
+    ![Screenshot (194)](https://github.com/Trangitg/se7.2/assets/119964656/c4c6e302-2527-452c-8ca3-58c2cb4e254c)
+ - Thêm component BoxCollider
+ - Thêm component ItemInfomation.cs
+ - TypeItem :chọn Type item vừa thêm ở ItemInfomation.cs : Ball
+ - MeshShow: kéo Object model của item vào
+     ![Screenshot (195)](https://github.com/Trangitg/se7.2/assets/119964656/7b8ac3cb-9ca8-4faa-9214-c95173d55898)
+ - Thêm hình ảnh trên nhân vật thêm vào sau khi ăn item: ItemAddHero.cs
+ - HeroController.cs: Có hàm xử ý va chạm item RunFunctionItem() thêm câu lệnh để set nhân vật sử dụng vật phẩm:
+
+        else if (codeItem == TypeItems.itemTest)
+        {
+        Modules.SetModelUseItem(transform, codeBody, Modules.itemTest, "");
+    ![Screenshot (196)](https://github.com/Trangitg/se7.2/assets/119964656/c8cea46c-29a8-4d33-b6e4-64fc218c28c1)
 
 # 3. Hướng dẫn Khởi tạo dự án
 ## 3.1. Cài Unity bản từ 2022 trở đi
