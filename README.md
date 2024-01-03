@@ -473,12 +473,17 @@ Code item là: 0 rocket, 1 power, 2 magnet, 3 2x, 4 cable, 5 skis
 # 2. Các sửa đổi cho game
 Mô tả chi tiết các sửa đổi trong game, bao gồm hình ảnh, thuyết minh, thuật toán hoặc các Class hay method thêm/sửa/xóa
 ## 2.1. Thay đổi 1: Tắt box tìm đối thủ
-    ![Screenshot (186)](https://github.com/Trangitg/se7.2/assets/119964656/b8f5d23f-6fdd-4f75-a0c1-b88980fec243)
+  ![Screenshot (186)](https://github.com/Trangitg/se7.2/assets/119964656/b8f5d23f-6fdd-4f75-a0c1-b88980fec243)
   Trong game, box tìm đối thủ được quản lý bởi một đối tượng gọi là AutoFindOpponentsBox. Trong AutoFindOpponentsBox, có một script được gọi là DeactiveMessageBox.cs, đây chịu trách nhiệm điều khiển hiển thị và ẩn đi box thông báo trạng thái.
   ![Screenshot (187)](https://github.com/Trangitg/se7.2/assets/119964656/71e43747-3bb3-4ee0-89b4-d404f0671217)
   Để tắt box thông qua việc nhấn nút ButtonClose, ta cần thêm một hàm mới, chẳng hạn như ButtonCloseMessage(). Hàm này được liên kết với nút ButtonClose và khi được gọi, nó sẽ thực hiện hành động tắt box hiển thị trạng thái bằng cách tương tác với DeactiveMessageBox.cs. Điều này giúp người chơi đóng box một cách dễ dàng khi cần thiết.    
   ![Screenshot (188)](https://github.com/Trangitg/se7.2/assets/119964656/dc9e4a20-cb78-4eef-bc8d-74c759a2bfb4)
   Hàm này được kích hoạt khi người dùng nhấn vào nút đóng (ButtonClose) trên hộp thoại. Đầu tiên, nó chạy một âm thanh thông báo việc nhấn nút (Module.PlayAudioClipFree). Sau đó, nó sử dụng một Animator để chơi một trigger animation ("TriClose") trên đối tượng này. Điều này thường được sử dụng để kích hoạt một hoạt ảnh đóng hộp thoại.
+  Sau đó vào Assets\Scenes\GameMain.unity
+    Trong phần Hierarchy, Vào GameMain\ContainGameMain\Canvas\FormGameMenu\MessageBox\AutoFindOpponentBox\AllContents\ButtonClose
+    Tại Component Button, Thêm Script AutoFindOpponentBox vào hàm On Click () và chọn function ButtonCloseMessage()
+    ![Screenshot 2024-01-03 003905](https://github.com/Trangitg/se7.2/assets/93517130/e45ddf1d-2024-4cd3-ad05-91dbaecafaf3)
+
 ## 2.2. Thay đổi 2: Thêm vật phẩm Ball 
  - Download 1 model vật phẩm mới
  - Click chọn file trong unity, trong phần Inspector chọn vào Materials, phần Textures chọn Extract Textures để trích xuất màu của model
@@ -503,17 +508,50 @@ Mô tả chi tiết các sửa đổi trong game, bao gồm hình ảnh, thuyế
  - Thêm hình ảnh trên nhân vật thêm vào sau khi ăn item: ItemAddHero.cs
  - HeroController.cs: Có hàm xử ý va chạm item RunFunctionItem() thêm câu lệnh để set nhân vật sử dụng vật phẩm:
 
-        else if (codeItem == TypeItems.itemTest)
+        else if (codeItem == TypeItems.ball)
         {
-        Modules.SetModelUseItem(transform, codeBody, Modules.itemTest, "");
+        Modules.SetModelUseItem(transform, codeBody, Modules.itemBall, "");
     ![Screenshot (196)](https://github.com/Trangitg/se7.2/assets/119964656/c8cea46c-29a8-4d33-b6e4-64fc218c28c1)
 ## 2.3. Thay đổi 3: Thêm thư viện Recorder
-
+ - Vào Asset Strore tải thư viện Record mà bạn mong muốn sau đó download và import thư viện này vào project của mình.
+   ![Screenshot (197)](https://github.com/Trangitg/se7.2/assets/119964656/166d5461-daa2-4a55-9b06-701d31562b74)
+ - Tìm mainCamera và add component như sau:
+  ![Screenshot (198)](https://github.com/Trangitg/se7.2/assets/119964656/07579353-c5f5-4a0f-8e48-34875f0c3222)
+    ![Screenshot (199)](https://github.com/Trangitg/se7.2/assets/119964656/b55effa7-f127-4981-b280-36f42db48e79)
+- Sau đó sử dụng đoạn code sau để thay đoạn code dùng everyplay trong file Recorder.cs:
+    * using UnityEngine; 
+        using UnityEngine.Rendering; 
+        using pmjo.NextGenRecorder; 
+        [RequireComponent(typeof(Camera))] 
+        public class OffScreenCameraRecorder : Recorder.VideoRecorderBase 
+        { 
+        public int videoWidth = 640; 
+        public int videoHeight = 480; 
+        private RenderTexture m_RenderTexture; 
+        private Camera m_Camera; 
+        private CommandBuffer m_CommandBuffer; 
+        void Awake() 
+        { 
+                m_RenderTexture = new RenderTexture(videoWidth, videoHeight, 24, RenderTextureFormat.Default); 
+                m_RenderTexture.Create(); 
+                m_Camera = GetComponent<Camera>(); 
+                m_Camera.targetTexture = m_RenderTexture; 
+        } 
+        }
+        if (!Recorder.IsSupported) 
+        { 
+        Debug.LogWarning("Next Gen Recorder not supported on this platform"); 
+        return; 
+        } 
+        RecordingTexture = m_RenderTexture; 
+                m_CommandBuffer = new CommandBuffer(); 
+        CommandBufferBlitRecordingTexture(m_CommandBuffer); 
+                m_Camera.AddCommandBuffer(CameraEvent.AfterEverything, m_CommandBuffer);
 ## 2.4. Thay đổi 4: Random tips for players on beginning loading screen
 + Providing a small tip for player at the beginning
 + Currently include 4 permanent tips that generate randomly each time you boot up the game
 + Include some animations
-![Alt text](image.png)
+![LoadingPageTips](https://github.com/Trangitg/se7.2/assets/118301761/e8d5b72c-d0b3-4d04-a112-69b9fafb5f8e)
 + The tips randomly generate using the TipRandom.cs file :
     - `public class TipRandom : MonoBehaviour`
 + In TipRandom we have an Enumerator function to display different tips:
@@ -538,18 +576,18 @@ Mô tả chi tiết các sửa đổi trong game, bao gồm hình ảnh, thuyế
         }
         `
     + When we begin this coroutine, Unity display the randomized number in the inspector and the tip in the UI with the Text GameObject.
-    ![Alt text](image-1.png)
+    ![TipSettingInUnity](https://github.com/Trangitg/se7.2/assets/118301761/9a0ff48a-afa8-41f4-9689-b70213c3fa50)
 + When displaying the tip, an animation will play every 60 frames, simply appearing and disappearing.
 + The animation is stored in TextTip.anim
-    ![Alt text](image-2.png)
-## 2.5. Daily Reward system
+    ![TipAnimation](https://github.com/Trangitg/se7.2/assets/118301761/2613d9ec-8aea-4a21-8cd4-57c914154ea6)
+## 2.5.Thay đổi 5: Daily Reward system
 + You can receive a 500 coins reward every 24 hours in real time
 + Added new button to receive daily reward : 
-![Alt text](image-3.png)
+![DailyRewardButton](https://github.com/Trangitg/se7.2/assets/118301761/f98809c1-82ca-4c05-b200-fa2855fae818)
 + Daily reward panel :
-![Alt text](image-4.png)
+![DailyRewardPanel](https://github.com/Trangitg/se7.2/assets/118301761/3a78685b-883a-492f-8590-930d75e4ae03)
 + After claiming reward , the claim button turns gray and cannot be clicked until time limit ends.
-## 2.6. Thêm nhân vật:
+## 2.6.Thay đổi 6:  Thêm nhân vật:
 - Download model định dạng .fbx (mixamo.com,...)
 
   ![image](https://github.com/Trangitg/se7.2/assets/148120250/5b09797b-9268-4e36-8286-734c9ae2aec1)
@@ -622,7 +660,7 @@ Mô tả chi tiết các sửa đổi trong game, bao gồm hình ảnh, thuyế
   ![image](https://github.com/Trangitg/se7.2/assets/148120250/108bf90c-3569-4cb0-a7be-26d98a9478f2)
 
   
-## 2.7. Thêm vật phẩm trong cửa hàng (mua key bằng vàng)
+## 2.7.Thay đổi 7: Thêm vật phẩm trong cửa hàng (mua key bằng vàng)
 - \Assets\ResourcesGame\Prefabs\MessageUI\ListItemBuy là giao diện của cửa hàng
 - Vào ListItemBuy\Content\ParentSingle: Thêm Object mới tên là Key, lấy thuộc tính của 1 vật phẩm đã có sẵn khác
   
@@ -653,7 +691,7 @@ Mô tả chi tiết các sửa đổi trong game, bao gồm hình ảnh, thuyế
   ![image](https://github.com/Trangitg/se7.2/assets/148120250/d145c96d-bd15-485d-accc-071d9c9808e8)
   
 
-## 2.8. Thêm ván trượt 
+## 2.8.Thay đổi 8: Thêm ván trượt 
 - Download model .fbx hình ván trượt
 
   ![image](https://github.com/Trangitg/se7.2/assets/148120250/e3c0944c-6b9c-40db-b7c1-35305afc2e16)
@@ -691,7 +729,88 @@ Mô tả chi tiết các sửa đổi trong game, bao gồm hình ảnh, thuyế
   ![image](https://github.com/Trangitg/se7.2/assets/148120250/c7cf6132-c51c-4cb9-9e5e-2bf80b568021)
 
   ![image](https://github.com/Trangitg/se7.2/assets/148120250/926c7368-67dd-4a8f-9860-06b2cf7c4994)
+## 2.9. Thay đổi 9: Fix map
+- Nhân vật rơi khỏi thế giới khi đi lên đường hầm
+Vào Assets\ResourcesGame\Prefabs\Terrains tìm những terrains có đường đi lên hầm (B005, B007, C005, C008, D013, D016) có những object là RoadCM
+Thêm component BarrielInfomation.cs vào RoadCM với các settings:
 
+SuportSkis : true
+
+TypeBarriel : NevelFall
+
+TypeFalling : Back
+
+NeverDestroy : true
+![Screenshot 2024-01-03 002339](https://github.com/Trangitg/se7.2/assets/93517130/0415fc4f-8511-40e3-89b4-d25b92e460c1)
+## 2.10.Thêm các script Facebook
+    - Import Package Facebook SDK chính thức của Meta (https://developers.facebook.com/docs/unity?locale=vi_VN) vào Unity
+    - Tạo một app trên Meta for Developers và thiết lập các cài đặt cơ bản, lấy App ID và Client Token điền vào tab Edit settings của Facebook SDK
+
+![1LV](https://github.com/Trangitg/se7.2/assets/119964656/8959d06c-c8df-4197-b885-628082b89653)
+![2LV](https://github.com/Trangitg/se7.2/assets/119964656/e5e4f93b-fb80-4489-90fe-83dd18746593)
+![3LV](https://github.com/Trangitg/se7.2/assets/119964656/b9893864-1c1b-4ceb-b8b8-faf1165ec819)
+
+
+    - Thêm Script FacebookController.cs vào Assets\Scripts\General với các hàm:
+    1. *Awake()*
+    - Hàm này được gọi khi script được khởi tạo.
+    - Khởi tạo và kích hoạt ứng dụng Facebook, cũng như đảm bảo rằng đối tượng này sẽ không bị hủy khi chuyển giữa các scene trong Unity.
+
+    2. *OnApplicationPause(bool pauseStatus)*
+    - Hàm được gọi khi ứng dụng tạm dừng hoặc quay lại chạy.
+    - Kích hoạt lại ứng dụng Facebook khi ứng dụng của chúng ta quay lại chạy.
+
+    3. *SetInit()*
+    - Gọi sau khi khởi tạo Facebook, đối phó với menu Facebook dựa trên việc người dùng đã đăng nhập hay chưa.
+
+    4. *FBlogin()*
+    - Bắt đầu quá trình đăng nhập Facebook với các quyền đọc cụ thể.
+
+    5. *AuthCallback(IResult result)*
+    - Hàm gọi lại sau mỗi lần đăng nhập.
+    - Nếu đăng nhập thành công, cập nhật thông tin người chơi và xử lý nhiệm vụ bổ sung như thưởng xu.
+
+    6. *DealWithFBMenus(bool isLoggedIn)*
+    - Xử lý menu Facebook dựa trên việc người chơi đã đăng nhập hay chưa.
+
+    7. *DisplayUsername(IResult result)*
+    - Hàm gọi lại sau khi lấy tên người chơi từ Facebook.
+    - Cập nhật Modules.fbName với tên đầu tiên của người chơi.
+
+    8. *DisplayProfilePic(IGraphResult result)*
+    - Hàm gọi lại sau khi lấy hình đại diện của người chơi từ Facebook.
+    - Tạo một Sprite từ texture hình đại diện và đặt nó vào Modules.fbMyAvatar.
+
+    9. *ShareWithFriends()*
+    - Gọi API Facebook để chia sẻ nội dung (feed) với bạn bè.
+
+    10. *InviteFriends()*
+        - Mời bạn bè tham gia trò chơi sử dụng API AppRequest của Facebook.
+
+    11. *TakeScreenshot()*
+        - Coroutine để chụp ảnh màn hình và đăng lên Facebook.
+
+    12. *OnPostScreenShot(IGraphResult result)*
+        - Hàm gọi lại sau khi đăng ảnh lên Facebook.
+
+    13. *PostScore(bool check)*
+        - Đăng điểm của người chơi lên Facebook nếu check là false, ngược lại lấy điểm từ Facebook sử dụng GetScores().
+
+    14. *OnPostScore(IGraphResult result)*
+        - Hàm gọi lại sau khi đăng điểm của người chơi lên Facebook.
+
+    15. *GetScores()*
+        - Lấy điểm từ Facebook sử dụng Graph API.
+
+    16. *OnGetScore(IGraphResult result)*
+        - Hàm gọi lại sau khi thành công lấy thông tin điểm từ Facebook.
+        - Tạo một panel hiển thị điểm bạn bè.
+
+    17. *DeserializeScores(string response)*
+        - Giải mã phản hồi từ cuộc gọi API Facebook để lấy điểm.
+
+    18. *GetPictureURL(string facebookID, int? width, int? height, string type)*
+        - Tạo URL để lấy ảnh đại diện của người chơi từ Facebook với các tham số như chiều rộng, chiều cao và loại ảnh.
 # 3. Hướng dẫn Khởi tạo dự án
 ## 3.1. Cài Unity bản từ 2022 trở đi
 Đăng ký tài khoản Unity bằng account sinh viên để có thể tham gia chương trình Education License của Unity
