@@ -519,34 +519,34 @@ Mô tả chi tiết các sửa đổi trong game, bao gồm hình ảnh, thuyế
   ![Screenshot (198)](https://github.com/Trangitg/se7.2/assets/119964656/07579353-c5f5-4a0f-8e48-34875f0c3222)
     ![Screenshot (199)](https://github.com/Trangitg/se7.2/assets/119964656/b55effa7-f127-4981-b280-36f42db48e79)
 - Sau đó sử dụng đoạn code sau để thay đoạn code dùng everyplay trong file Recorder.cs:
-    using UnityEngine; 
-    using UnityEngine.Rendering; 
-    using pmjo.NextGenRecorder; 
-    [RequireComponent(typeof(Camera))] 
-    public class OffScreenCameraRecorder : Recorder.VideoRecorderBase 
-    { 
-    public int videoWidth = 640; 
-    public int videoHeight = 480; 
-    private RenderTexture m_RenderTexture; 
-    private Camera m_Camera; 
-    private CommandBuffer m_CommandBuffer; 
-    void Awake() 
-    { 
-            m_RenderTexture = new RenderTexture(videoWidth, videoHeight, 24, RenderTextureFormat.Default); 
-            m_RenderTexture.Create(); 
-            m_Camera = GetComponent<Camera>(); 
-            m_Camera.targetTexture = m_RenderTexture; 
-    } 
-    }
-    if (!Recorder.IsSupported) 
-    { 
-    Debug.LogWarning("Next Gen Recorder not supported on this platform"); 
-    return; 
-    } 
-    RecordingTexture = m_RenderTexture; 
-            m_CommandBuffer = new CommandBuffer(); 
-    CommandBufferBlitRecordingTexture(m_CommandBuffer); 
-            m_Camera.AddCommandBuffer(CameraEvent.AfterEverything, m_CommandBuffer);
+    * using UnityEngine; 
+        using UnityEngine.Rendering; 
+        using pmjo.NextGenRecorder; 
+        [RequireComponent(typeof(Camera))] 
+        public class OffScreenCameraRecorder : Recorder.VideoRecorderBase 
+        { 
+        public int videoWidth = 640; 
+        public int videoHeight = 480; 
+        private RenderTexture m_RenderTexture; 
+        private Camera m_Camera; 
+        private CommandBuffer m_CommandBuffer; 
+        void Awake() 
+        { 
+                m_RenderTexture = new RenderTexture(videoWidth, videoHeight, 24, RenderTextureFormat.Default); 
+                m_RenderTexture.Create(); 
+                m_Camera = GetComponent<Camera>(); 
+                m_Camera.targetTexture = m_RenderTexture; 
+        } 
+        }
+        if (!Recorder.IsSupported) 
+        { 
+        Debug.LogWarning("Next Gen Recorder not supported on this platform"); 
+        return; 
+        } 
+        RecordingTexture = m_RenderTexture; 
+                m_CommandBuffer = new CommandBuffer(); 
+        CommandBufferBlitRecordingTexture(m_CommandBuffer); 
+                m_Camera.AddCommandBuffer(CameraEvent.AfterEverything, m_CommandBuffer);
 ## 2.4. Thay đổi 4: Random tips for players on beginning loading screen
 + Providing a small tip for player at the beginning
 + Currently include 4 permanent tips that generate randomly each time you boot up the game
