@@ -81,6 +81,20 @@ public class AllLanguages : MonoBehaviour {
         "点击播放", 
         "Táp để chơi" 
     };
+    public static List<string> menuDailyReward = new List<string>() 
+    { 
+        "DAILY REWARD", 
+        "ЕЖЕДНЕВНЫЕ НАГРАДЫ", 
+        "RÉCOMPENSES QUOTIDIENNES",
+        "TÄGLICHE BELOHNUNGEN", 
+        "Recompensas diarias", 
+        "Recompensas diárias", 
+        "المكافآت اليومية",
+        "毎日の報酬", 
+        "일일 보상",
+        "每日奖励", 
+        "PHẦN THƯỞNG HÀNG NGÀY" 
+    };
     public static List<string> menuGetFree = new List<string>() 
     { 
         "Get free Keys, Hoverboard", 

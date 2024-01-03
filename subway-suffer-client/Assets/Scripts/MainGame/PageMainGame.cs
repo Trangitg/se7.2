@@ -15,7 +15,7 @@ public class PageMainGame : MonoBehaviour {
     public Vector3 pointStartEnemyLeft = Vector3.zero, pointStartEnemyRight = Vector3.zero;
     public GameObject mesSaveMeBox, mesPauseGame, mesCountTime,
         mesNotEnoughKey, mesSetting, getSkisBox,
-        getKeysBox, missionsBox, challengeBox,
+        getKeysBox, missionsBox, challengeBox, DRbox,
         listLanguageBox, rateBox, shareFBBox,
         inviteFBBox, networkBox, roomBox,
         bonusFirstBox, findOpponentsBox, resultOnlineBox;
@@ -247,7 +247,7 @@ public class PageMainGame : MonoBehaviour {
     {
         bool result = true;
         if (mesSetting.activeSelf || mesPauseGame.activeSelf || mesSaveMeBox.activeSelf || mesNotEnoughKey.activeSelf
-               || getSkisBox.activeSelf || getKeysBox.activeSelf || missionsBox.activeSelf || challengeBox.activeSelf
+               || getSkisBox.activeSelf || getKeysBox.activeSelf || missionsBox.activeSelf || challengeBox.activeSelf || DRbox.activeSelf
                || listLanguageBox.activeSelf || mesCountTime.activeSelf || rateBox.activeSelf || shareFBBox.activeSelf
                || inviteFBBox.activeSelf || networkBox.activeSelf || roomBox.activeSelf || findOpponentsBox.activeSelf
                || bonusFirstBox.activeSelf | resultOnlineBox.activeSelf) result = false;
@@ -605,7 +605,13 @@ public class PageMainGame : MonoBehaviour {
         Modules.containAchievement.SetActive(true);
         Modules.containAchievement.transform.Find("MainCamera").GetComponent<PageAchievement>().CallStart();
     }
-
+public void ButtonDailyRewardClick()
+    {
+        Modules.PlayAudioClipFree(Modules.audioButton);
+        DRbox.GetComponent<DailyReward>().StartShowMessage();
+        DRbox.SetActive(true);
+        DRbox.GetComponent<Animator>().SetTrigger("TriOpen");
+    }
     public void ButtonHeroClick()
     {
         Modules.PlayAudioClipFree(Modules.audioButton);
