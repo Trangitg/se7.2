@@ -151,7 +151,6 @@ public enum TypeItems
     mysteryBox,
     hoverbike,
     balloon,
-    ball,
     missions,
     challenge,
     nextGate,

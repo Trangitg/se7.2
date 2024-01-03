@@ -605,7 +605,7 @@ public class PageMainGame : MonoBehaviour {
         Modules.containAchievement.SetActive(true);
         Modules.containAchievement.transform.Find("MainCamera").GetComponent<PageAchievement>().CallStart();
     }
-public void ButtonDailyRewardClick()
+    public void ButtonDailyRewardClick()
     {
         Modules.PlayAudioClipFree(Modules.audioButton);
         DRbox.GetComponent<DailyReward>().StartShowMessage();

@@ -1436,6 +1436,20 @@ public class AllLanguages : MonoBehaviour {
             "이름 : Kiki\n미국 사람\n높이 : 145 cm\n무게 : 42 kg\n취미 : 파티를 사랑한다",
             "姓名：Kiki\n美国\n身高：145 厘米\n体重：42 公斤\n爱好： 喜欢派对",
             "Tên: Kiki\nNgười Mỹ\nCao: 145 cm\nNặng: 42 kg\nSở thích: Thích Tiệc"
+        },
+        new List<string>() 
+        {
+            "Name: Boy\nAmerican\nHeight: 145 cm\nWeight: 42 kg\nHobbies: Loves to Party",
+            "Имя: Boy\nАмериканская\nВысота: 145 cm\nВес: 42 kg\nУвлечения: Любит вечеринки",
+            "Nom: Boy\nAméricain\nTaille: 145 cm\nPoids: 42 kg\nLoisirs: Aime faire la fête",
+            "Name: Boy\nAmerikanisch\nGröße: 145 cm\nGewicht: 42 kg\nHobby: Liebt zur Party",
+            "Nombre: Boy\nAmericano\nAltura: 145 cm\nPeso: 42 kg\nPasatiempos: Ama a la fiesta",
+            "Nome: Boy\nAmericano\nAltura: 145 cm\nPeso: 42 kg\nPasatiempos: Gosta de festa",
+            "الاسم: Boy\nأمريكي \nالطول: 145 سم \nالوزن: 42 كجم \nيحب الحزب",
+            "名前：Boy\nアメリカ人\n身長：145 cm\n体重：42 kg\n趣味： パーティーを 愛する",
+            "이름 : Boy\n미국 사람\n높이 : 145 cm\n무게 : 42 kg\n취미 : 파티를 사랑한다",
+            "姓名：Boy\n美国\n身高：145 厘米\n体重：42 公斤\n爱好： 喜欢派对",
+            "Tên: Boy\nNgười Mỹ\nCao: 145 cm\nNặng: 42 kg\nSở thích: Thích Tiệc"
         }
     };
     public static List<List<string>> heroInfoHoverboard = new List<List<string>>() { 

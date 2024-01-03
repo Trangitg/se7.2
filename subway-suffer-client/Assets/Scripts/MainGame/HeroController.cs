@@ -1749,10 +1749,6 @@ public class HeroController : MonoBehaviour {
                 SetDownBonusRoad(2);
             }
         }
-        else if (codeItem == TypeItems.ball)
-        {
-        Modules.SetModelUseItem(transform, codeBody, Modules.itemBall, "");
-        }
     }
 
     void AudoHideChallenge()
