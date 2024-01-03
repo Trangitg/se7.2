@@ -46,20 +46,20 @@ Các usecase chính, nhân vật có thể chơi như nào. Cần có hình ản
 * Ui ContainAchievement: Hiển thị bảng điểm sau khi thua bao gổm điểm số chơi được, vàng kiếm được,... và một hoạt ảnh nhân vật thua game. Tuy nhiên do đã bỏ phần facebook và chplay cùng một số tính năng thưởng khác liên quan đến quảng cáo nên phần này chỉ đơn giản là xử lí điểm số và nhân vật.
 ![image](https://user-images.githubusercontent.com/91232320/219079293-78a69969-39a2-4b9b-8713-0172348b7a4b.png)
 * Nhân vật có thể trườn, nhảy, tránh né bằng cách di chuyển sang bên trái và phải.
-    ![Alt text](image.png)
+    ![11](https://github.com/Trangitg/se7.2/assets/119964656/b9110525-afe2-4fc8-b062-4485224873f1)
     Nhân vật chỉ được di chuyển trong 3 lane như hình. Lúc xuất phát, nhân vật luôn xuất phát ở lane giữa
     Một số chướng ngại vật mà người chơi sẽ gặp phải:
-    ![Alt text](image-1.png)
-    ![Alt text](image-2.png)
-    ![Alt text](image-3.png)
-    ![Alt text](image-4.png)
+    ![22](https://github.com/Trangitg/se7.2/assets/119964656/a685278c-3cfe-41b0-94ee-a7ae6f549b66)
+    ![33](https://github.com/Trangitg/se7.2/assets/119964656/3963259d-a012-4600-b553-1b74e6d65e0e)
+    ![44](https://github.com/Trangitg/se7.2/assets/119964656/8371c650-9604-4234-bc7c-2df9dc4c028c)
+    ![55](https://github.com/Trangitg/se7.2/assets/119964656/35c2f62b-6845-4309-89dd-d4729c2e53c0)
     Từ đầu game, người chơi sẽ bị một security rượt đuổi. Nếu người chơi đâm vào đầu tàu, barie hay bị bảo vệ bắt được sẽ ngay lập tức dừng màn chơi lại. Một hộp lựa chọn sẽ hiện ra
-    ![Alt text](image-5.png)
-    
+    ![66](https://github.com/Trangitg/se7.2/assets/119964656/316397a7-a70a-4cc6-8979-9cd120cc7be2)
     Người chơi có quyền sử dụng chìa khóa để hồi sinh, hoặc share video quá trình mình chơi lên các nền tảng mạng xã hội. Hết thời gian chờ, bảng Top Run hiện lên show số điểm, số coin thu được và số hạng trong bảng xếp hạng
     Người chơi có thể gặp các vật phẩm đặc biệt nằm trên đường chạy, như chùm bong bóng, ván trượt, thanh nam châm,…
-    Có 6 vật phẩm nhặt giữa đường chạy mà chúng ta có thể nâng cấp:
-    ![Alt text](image-6.png)
+    Có 6 vật phẩm nhặt giữa đường chạy mà chúng ta có thể nâng cấp:  
+    
+    ![77](https://github.com/Trangitg/se7.2/assets/119964656/a06866ac-f608-4090-9cd8-962ac6a918b5)
     Nếu nhân vật chết hay trạng thái showScorePlay thì tạo một clone nhân vật. Clone này không có rigid body với model là arrested để hiện thị trạng thái thua game.
  Nếu được mở ở màn hình menu thì chuyển animation nhân vật sang idleMenu và hiển thị điểm số cao nhất của người chơi.
  Nếu ấn play thì tạo trận chơi mới.
