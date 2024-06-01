@@ -818,9 +818,3 @@ NeverDestroy : true
 ## 3.2. Mở dự án trên Unity và chạy thử ngay trên Màn hình Unity Editor
 Vào menu File-> Open Scene, chọn vào file Assets/Scene/LoadData.unity
 Bấm nút Play của Unity để chạy thử
-
-## 3.3. Build và chạy trên Android
-Vào menu File -> Build Settings, chọn Platform là Android rồi nhấn "Switch Platform" để chuyển sang Android. Sau đó nhấn vào nút Build để thực hiện build ra file APK. Tham khảo trên Google search để biết cách cài đặt Build settings sao cho phù hợp
-
-Đường link sản phầm:
-https://drive.google.com/file/d/1Hd6T4yLQBaa8Bq--99ny376oVNtvqCye/view?usp=drive_link
